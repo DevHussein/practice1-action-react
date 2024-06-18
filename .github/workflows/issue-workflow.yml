@@ -1,0 +1,22 @@
+name: Print Issue Details
+on:
+  issues:
+    types: [opened, edited]
+jobs:
+  print-issue-details:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            console.log(context.issue);
+            console.log(context.payload.issue);
+            console.log(context.payload.issue.body);
+            console.log(context.payload.issue.title);
+            console.log(context.payload.issue.number);
+            console.log(context.payload.issue.user.login);
+            console.log(context.payload.issue.user.id);
+            console.log(context.payload.issue.user.node_id);
+            console.log(context.payload.issue.user.type);
+
